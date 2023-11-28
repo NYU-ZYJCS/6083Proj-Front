@@ -1,0 +1,3 @@
+export const travelEasyContent = "Rent a car for a weekend getaway or even a month - whatever you need, from top rental brands."
+export const carRentEasyContent = "Online or through the Uber app, you can compare and book a rental car in minutes. Choose to pay using the credit card you have on file."
+export const flexibleBookingContent = "Book a rental car the same day or months in advance - whatever you need. When plans change, free cancellation options are available.\n"

@@ -2,14 +2,18 @@ import React from 'react';
 import RentForm from "./RentForm";
 import VehicleDisplayCase from "./VehicleDisplayCase";
 import {Flex} from "antd";
+import DefaultDisplayCase from "./DefaultDisplayCase";
 const SetOrder = () => {
+    const [useShowResult, setUseShowResult] = React.useState(true);
     return (
-        <React.StrictMode>
-            <Flex justify={"start"} aligh="start" style={{paddingTop: 25}} gap="large">
-                <RentForm/>
-                <VehicleDisplayCase/>
-            </Flex>
-        </React.StrictMode>
+        <div className='main-content'>
+            <React.StrictMode>
+                <Flex justify={"start"} aligh="start" style={{paddingTop: 25}}>
+                    <RentForm/>
+                    {useShowResult ? <VehicleDisplayCase/> : <DefaultDisplayCase/>}
+                </Flex>
+            </React.StrictMode>
+        </div>
     )
 }
 
