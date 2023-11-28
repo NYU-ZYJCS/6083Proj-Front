@@ -1,0 +1,39 @@
+.footer {
+    background-color: #333; /* or any color you prefer */
+    color: #fff; /* footer text color */
+    padding: 20px 0; /* padding above and below the footer content */
+    text-align: center; /* center the footer content */
+    font-size: 0.8rem; /* smaller font size for footer text */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto; /* center the container */
+    display: flex;
+    flex-direction: column; /* stack children vertically */
+    align-items: center; /* align items in the center horizontally */
+}
+
+.footer-brand {
+    font-size: 1.2rem; /* larger font size for brand */
+    margin-bottom: 10px; /* space below the brand name */
+}
+
+.footer-links a {
+    color: #fff; /* maintain white text color for links */
+    text-decoration: none; /* remove underline from links */
+    margin: 0 10px; /* space around the links */
+}
+
+.footer-links a:hover {
+    text-decoration: underline; /* underline links on hover */
+}
+
+.footer-brand img {
+    width: 50px; /* adjust image size */
+    height: 50px;
+    margin-right: 10px; /* space between image and brand name */
+}
