@@ -1,8 +1,10 @@
 import React from 'react';
-import {Button, Card, Form, Select} from "antd";
+import {Button, Card, Form, Select, message} from "antd";
 import {DatePicker} from "antd";
 import dayjs from "dayjs";
 import './SetOrderStyle.css';
+import {useFetchVehicleList} from "./Hooks/useFetchOfficeList";
+const {Option} = Select;
 
 const {RangePicker} = DatePicker;
 const layout = {
@@ -23,107 +25,98 @@ const disabledPastDays = (current) => {
     return current && current < dayjs().startOf('day');
 };
 
-const AddressSelector = ({usage}) => {
-    return (
-        <Select
-            showSearch
-            style={{width: 250}}
-            placeholder={`Select your ${usage}  address`}
-            optionFilterProp="children"
-            filterOption={(input, option) =>
-                (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
-            filterSort={(optionA, optionB) =>
-                (optionA?.label ?? '').toLowerCase().localeCompare((optionB?.label ?? '').toLowerCase())
-            }
-            options={[
+
+
+
+
+const RentForm = ({fetchData}) => {
+
+    const [useDiffLoc, setUseDiffLoc] = React.useState(false);
+    const {addressList, loadingAddress} = useFetchVehicleList();
+
+    const items = [
+        {
+            name: ['rent', 'pickUpAddress'],
+            label: '',
+            colon: false,
+            rules: [
                 {
-                    value: '1',
-                    label: 'Not Identified',
-                },
+                    required: true,
+                    message: 'Please select your pick up address'
+                }
+            ],
+            component: (
+                <Select
+                    style={{width: 250}}
+                    placeholder={`Select your pick up  address`}
+                    loading={loadingAddress}
+                    disabled={loadingAddress}
+                >
+                    {addressList.map((option, index) => {
+                        return <Option value={option.value} key={index}>{option.name}</Option>
+                    })}
+
+                </Select>
+            )
+        },
+        {
+            name: ['rent', 'rentRange'],
+            label: '',
+            colon: false,
+            rules: [
                 {
-                    value: '2',
-                    label: 'Closed',
-                },
+                    required: true,
+                    message: 'Please select your rent range'
+                }
+            ],
+            component: <RangePicker disabledDate={disabledPastDays}/>,
+        },
+        {
+            name: ['rent', 'returnAddress'],
+            label: '',
+            colon: false,
+            rules: [
                 {
-                    value: '3',
-                    label: 'Communicated',
-                },
-                {
-                    value: '4',
-                    label: 'Identified',
-                },
-                {
-                    value: '5',
-                    label: 'Resolved',
-                },
-                {
-                    value: '6',
-                    label: 'Cancelled',
-                },
-            ]}
-        />
-    )
+                    required: true,
+                    message: 'Please select your return address'
+                }
+            ],
+            component: (
+                <Select
+                    style={{width: 250}}
+                    placeholder={`Select your drop off  address`}
+                    loading={loadingAddress}
+                    disabled={loadingAddress}
+                >
+                    {addressList.map((option, index) => {
+                        return <Option value={option.value} key={index}>{option.name}</Option>
+                    })}
 
-}
+                </Select>
+            ),
+            shouldRender: (useDiffLoc) => useDiffLoc,
+        }
 
+    ]
 
-const items = [
-    {
-        name: ['rent', 'pickUpAddress'],
-        label: '',
-        colon: false,
-        rules: [
-            {
-                required: true,
-                message: 'Please select your pick up address'
-            }
-        ],
-        component: <AddressSelector usage="pick up"/>
-    },
-    {
-        name: ['rent', 'rentRange'],
-        label: '',
-        colon: false,
-        rules: [
-            {
-                required: true,
-                message: 'Please select your rent range'
-            }
-        ],
-        component: <RangePicker disabledDate={disabledPastDays}/>,
-    },
-    {
-        name: ['rent', 'returnAddress'],
-        label: '',
-        colon: false,
-        rules: [
-            {
-                required: true,
-                message: 'Please select your return address'
-            }
-        ],
-        component: <AddressSelector usage="drop off"/>,
-        shouldRender: (useDiffLoc) => useDiffLoc,
-    }
-
-]
-
-
-
-
-const RentForm = () => {
-
-    let [useDiffLoc, setUseDiffLoc] = React.useState(false);
+    const [form] = Form.useForm();
     const toggleDiffLoc = () => {
         setUseDiffLoc(!useDiffLoc);
     }
-    console.log(items[2]);
+
+    const onFinish = () => {
+        form.validateFields().then((values) => {
+            fetchData(values);
+        }).catch((info) => {
+        });
+    }
     return (
         <Card
             title="Set your rental order"
             className="rentForm"
         >
             <Form
+                form={form}
                 {...layout}
                 name="rental-form"
                 onFinish={searchVehicles}
@@ -131,13 +124,21 @@ const RentForm = () => {
                 {items.map((item, index) => {
                     const shouldRender = item.shouldRender ? item.shouldRender(useDiffLoc) : true;
                     return shouldRender && (
-                        <Form.Item name={item.name} label={item.label} colon={item.colon} key={index} rules={item.rules}>
+                        <Form.Item name={item.name} label={item.label} colon={item.colon} key={index}
+                                   rules={item.rules}>
                             {item.component}
                         </Form.Item>
                     )
                 })}
+                <Form.Item>
+                    <Button shape="round" onClick={toggleDiffLoc}>Different Pickup/Drop-off Address?</Button>
+                </Form.Item>
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" shape="round" onClick={onFinish}>
+                        Search Vehicles
+                    </Button>
+                </Form.Item>
             </Form>
-            <Button shape="round" onClick={toggleDiffLoc} >Different Pickup/Drop-off Address?</Button>
         </Card>
     )
 }
