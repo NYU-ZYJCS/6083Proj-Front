@@ -1,42 +1,42 @@
 export const fetchVehicleList = {
     "code": 200,
     "message": "success",
-    "data" : [
+    "data": [
         {
-            type: "Special",
+            make: "Special",
             dailyRate: 20,
             description: 'Mystery Car Compact or Larger or Similar',
-            icon_url: 'https://ctimg-fleet.cartrawler.com/mystery/car/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fmystery%2Fcar%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
+            imgUrl: 'https://ctimg-fleet.cartrawler.com/mystery/car/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fmystery%2Fcar%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
             curOdometer: 100,
             overMileFee: 0.25,
         },
         {
-            type: "Economy",
+            make: "Economy",
             dailyRate: 42,
             description: 'Kia Rio or Similar',
-            icon_url: 'https://www.avis.com/content/dam/cars/s/2021/kia/2021-kia-soul-s-5door-hatchback-white_featured.png',
+            imgUrl: 'https://www.avis.com/content/dam/cars/s/2021/kia/2021-kia-soul-s-5door-hatchback-white_featured.png',
             curOdometer: 100,
             overMileFee: 0.25,
         },
         {
-            type: "Compact",
+            make: "Compact",
             dailyRate: 42,
             description: 'Kia Soul or Similar',
-            icon_url: 'https://ctimg-fleet.cartrawler.com/jeep/wrangler-sahara/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fjeep%2Fwrangler-sahara%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
+            imgUrl: 'https://ctimg-fleet.cartrawler.com/jeep/wrangler-sahara/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fjeep%2Fwrangler-sahara%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
             overMileFee: 0.25,
         },
         {
-            type: "Midsize",
+            make: "Midsize",
             dailyRate: 24,
             description: 'Nissan Sentra or Similar',
-            icon_url: 'https://ctimg-fleet.cartrawler.com/mystery/car/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fmystery%2Fcar%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
+            imgUrl: 'https://ctimg-fleet.cartrawler.com/mystery/car/secondary.png?w=215&mark-align=center,middle&mark=https%3A%2F%2Fctimg-fleet.cartrawler.com%2Fmystery%2Fcar%2Fsecondary-paint.png%3Fbri%3D-18%26con%3D50%26monochrome%3DC6C6CC%26w%3D215',
             overMileFee: 0.25,
         },
         {
-            type: "Standard",
+            make: "Standard",
             dailyRate: 42,
             description: 'Toyota Camry or Similar',
-            icon_url: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=1',
+            imgUrl: 'https://xsgames.co/randomusers/avatar.php?g=pixel&key=1',
             overMileFee: 0.25,
         }
     ]
@@ -47,51 +47,62 @@ export const fetchVehicleList = {
 export const fetchOfficeList = {
     "code": 200,
     "message": "success",
-    "data" : [
+    "data": [
         {
-            "id": 1,
-            "name": "San Francisco International Airport",
-            "address": "780 McDonnell Rd, San Francisco, CA 94128",
-            "phone": "(650) 877-6780",
-            "hours": "24 hours",
-            "latitude": 37.6213129,
-            "longitude": -122.3789554
+            "officeID": 1,
+            "phone": "555-0101",
+            "address": {
+                "addressID": 1,
+                "street": "123 Main St",
+                "city": "Anytown",
+                "state": "NY",
+                "zipCode": "12345"
+            }
         },
         {
-            "id": 2,
-            "name": "San Francisco - Union Square",
-            "address": "325 Mason St, San Francisco, CA 94102",
-            "phone": "(415) 771-2200",
-            "hours": "Mon-Sun 7:30AM-6:00PM",
-            "latitude": 37.787092,
-            "longitude": -122.409764
+            "officeID": 2,
+            "phone": "555-0102",
+            "address": {
+                "addressID": 2,
+                "street": "456 Maple Dr",
+                "city": "Springfield",
+                "state": "IL",
+                "zipCode": "23456"
+            }
         },
         {
-            "id": 3,
-            "name": "San Francisco - Fisherman's Wharf",
-            "address": "499 Jefferson St, San Francisco, CA 94109",
-            "phone": "(415) 775-4700",
-            "hours": "Mon-Sun 7:30AM-6:00PM",
-            "latitude": 37.8079,
-            "longitude": -122.4173
+            "officeID": 3,
+            "phone": "555-0103",
+            "address": {
+                "addressID": 3,
+                "street": "789 Oak Ln",
+                "city": "Smallville",
+                "state": "OH",
+                "zipCode": "34567"
+            }
         },
         {
-            "id": 4,
-            "name": "San Francisco - Geary Blvd",
-            "address": "325 Mason St, San Francisco, CA 94102",
-            "phone": "(415) 771-2200",
-            "hours": "Mon-Sun 7:30AM-6:00PM",
-            "latitude": 37.787092,
-            "longitude": -122.409764
+            "officeID": 4,
+            "phone": "555-0104",
+            "address": {
+                "addressID": 4,
+                "street": "101 Pine Rd",
+                "city": "Centerville",
+                "state": "CA",
+                "zipCode": "45678"
+            }
         },
         {
-            "id": 5,
-            "name": "San Francisco - Geary Blvd",
-            "address": "325 Mason St, San Francisco, CA 94102",
-            "phone": "(415) 771-2200",
-            "hours": "Mon-Sun 7:30AM-6:00PM",
-            "latitude": 37.787092,
-            "longitude": -122.409764
-        }]
+            "officeID": 5,
+            "phone": "555-0105",
+            "address": {
+                "addressID": 5,
+                "street": "202 Birch Blvd",
+                "city": "Lakeview",
+                "state": "MI",
+                "zipCode": "56789"
+            }
+        }
+    ]
 }
 

@@ -36,7 +36,7 @@ const RentForm = ({fetchData}) => {
 
     const items = [
         {
-            name: ['rent', 'pickUpAddress'],
+            name:  'officeID',
             label: '',
             colon: false,
             rules: [
@@ -53,8 +53,11 @@ const RentForm = ({fetchData}) => {
                     disabled={loadingAddress}
                 >
                     {addressList.map((option, index) => {
-                        return <Option value={option.value} key={index}>{option.name}</Option>
-                    })}
+                        const address = option?.address?.street + ' '
+                            + option?.address?.city + ' ' + option?.address?.state + ' ' + option?.address?.zipCode;
+                        return <Option value={option.officeID} key={index}>{address}</Option>
+                        }
+                    )}
 
                 </Select>
             )
@@ -72,7 +75,7 @@ const RentForm = ({fetchData}) => {
             component: <RangePicker disabledDate={disabledPastDays}/>,
         },
         {
-            name: ['rent', 'returnAddress'],
+            name: ['rent', 'returnID'],
             label: '',
             colon: false,
             rules: [

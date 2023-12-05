@@ -24,9 +24,9 @@ const VehicleDisplayCase = ({vehicleList, vehicleLoading}) => {
                             }
                         >
                             <List.Item.Meta
-                                avatar={<img src={item.icon_url} alt=""/>}
-                                title={<a href="https://ant.design">{item.type}</a>}
-                                description={item.description}
+                                avatar={<img src={item.imgUrl} alt=""/>}
+                                title={<a href="https://ant.design">{item.make}</a>}
+                                description={'TBA'}
                             />
                         </List.Item>
                     )}
