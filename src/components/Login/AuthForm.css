@@ -1,5 +1,32 @@
-/* AuthFormStyles.css */
-.form-card {
-    max-width: 500px;
+.form-login-card {
+    max-width: 600px;
     margin: 50px auto;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    /* add some shadow effects */
+}
+
+
+.form-register-card {
+    max-width: 900px;
+    margin: 200px auto;
+    margin-left: 50px;
+    height: 960px;
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+    margin-bottom: 200px;
+}
+
+.form-reset-card {
+    max-width: 600px;
+    margin: 50px auto;
+    height: 450px;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* semi-transparent white background */
+    border-radius: 10px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
 }
